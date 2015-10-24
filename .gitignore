@@ -1,0 +1,13 @@
+target/
+.idea/
+.extract/
+*.iml
+*.log
+.settings/
+.project
+.classpath
+hibernate.properties
+bankhead.properties
+bower_components/
+node_modules/
+.sass-cache/

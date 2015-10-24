@@ -1,0 +1,177 @@
+// Global Styles
+// ==============================
+
+body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Rufina', serif;
+    color: #384F7A;
+    background: #F3EDE8;
+//    background: #fffaf5 url("../image/bankhead.png") repeat;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0 0 35px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+p {
+    margin: 0 0 25px;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+a {
+    margin: 0 0 25px;
+    font-size: 18px;
+    line-height: 1.5;
+    color: #C24848;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    &:hover, &:focus, &:active {
+        text-decoration: none;
+        color: #176e61;
+    }
+}
+
+.media-icon{
+  text-align: center;
+}
+.media-body{
+  text-align: left;
+  padding-left:30px;
+}
+
+::-moz-selection {
+    text-shadow: none;
+    background: #fcfcfc;
+    background: rgba(255,255,255,.2);
+}
+
+::selection {
+    text-shadow: none;
+    background: #fcfcfc;
+    background: rgba(255,255,255,.2);
+}
+
+img::selection {
+    background: 0 0;
+}
+
+img::-moz-selection {
+    background: 0 0;
+}
+
+@media(min-width:767px) {
+    p {
+        margin: 0 0 35px;
+        font-size: 20px;
+        line-height: 1.6;
+    }
+    a {
+        margin: 0 0 35px;
+        font-size: 20px;
+        line-height: 1.6;
+    }
+}
+
+// Downloads and Map
+// Never used
+// ==============================
+
+// .download-section {
+//     width: 100%;
+//     padding: 50px 0;
+//     color: #fff;
+//     background: url(../image/downloads-bg.jpg) no-repeat center center scroll;
+//     background-color: #000;
+//     -webkit-background-size: cover;
+//     -moz-background-size: cover;
+//     background-size: cover;
+//     -o-background-size: cover;
+// }
+
+// #map {
+//     width: 100%;
+//     height: 200px;
+//     margin-top: 100px;
+// }
+
+// @media(min-width:767px) {
+
+//     .download-section {
+//         padding: 100px 0;
+//     }
+
+//     #map {
+//         height: 400px;
+//         margin-top: 250px;
+//     }
+// }
+
+// Buttons
+// ==============================
+
+.btn {
+    text-transform: uppercase;
+    font-family: 'Rufina', serif;
+    font-weight: 400;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+
+// Never used
+
+// .btn-default {
+//     border: 1px solid #28c3ab;
+//     color: #28c3ab;
+//     background-color: transparent;
+// }
+
+// .btn-default:hover,
+// .btn-default:focus {
+//     border: 1px solid #28c3ab;
+//     outline: 0;
+//     color: #000;
+//     background-color: #28c3ab;
+// }
+
+// .btn-huge {
+//     padding: 25px;
+//     font-size: 26px;
+// }
+
+// .banner-social-buttons {
+//     margin-top: 0;
+// }
+
+// @media(max-width:1199px) {
+//     ul.banner-social-buttons {
+//         margin-top: 15px;
+//     }
+// }
+
+// @media(max-width:767px) {
+//     ul.banner-social-buttons>li {
+//         display: block;
+//         margin-bottom: 20px;
+//         padding: 0;
+//     }
+
+//     ul.banner-social-buttons>li:last-child {
+//         margin-bottom: 0;
+//     }
+// }

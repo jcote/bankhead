@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 4.0//EN"
+        "http://www.tuckey.org/res/dtds/urlrewrite4.0.dtd">
+
+<urlrewrite>
+
+    
+    <rule>
+        <from>^/admin/?$</from>
+        <to type="forward">%{context-path}/admin/index.html</to>
+    </rule>
+        
+    <rule>
+        <from>^/admin/(.+)$</from>
+        <to type="forward">%{context-path}/admin/$1</to>
+    </rule>
+
+    <rule>
+        <from>^/?$</from>
+        <to type="forward">%{context-path}/main/index.html</to>
+    </rule>
+    
+    <rule>
+        <from>^/(css|js|image|partials)/(.*)$</from>
+        <to type="forward">%{context-path}/main/$1/$2</to>
+    </rule>
+
+    
+    
+</urlrewrite>
+

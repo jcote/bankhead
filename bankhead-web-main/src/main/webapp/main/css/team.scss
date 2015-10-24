@@ -1,0 +1,19 @@
+
+// Team list
+// ==============================
+
+.team-list-item {
+  border: 1px solid #aaaaaa;
+  background-color: #444444;
+}
+
+.team-list-item:first-child {
+  border-top-right-radius: 12px;
+  border-top-left-radius: 12px;
+}
+
+.team-list-item:last-child {
+  margin-bottom: 0;
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+}

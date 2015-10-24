@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="bankheadApp">
+<head>
+    <title>Bankhead</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="lib/bootstrap/bootstrap.css" rel="stylesheet">
+    <link href="css/bankhead.css" rel="stylesheet">
+    
+    <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href='http://fonts.googleapis.com/css?family=Gilda+Display' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Rufina:400,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+
+	<div bs-navbar class="navbar navbar-custom navbar-fixed-top" role="navigation">
+	    <div class="container">
+	        <div class="navbar-header page-scroll">
+	            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+	                <i class="fa fa-bars"></i>
+	            </button>
+	            <a class="navbar-brand" href="#page-top">
+	                <i class="fa fa-play-circle"></i>  <span class="light">bankhead</span> Opinions
+	            </a>
+	        </div>
+	
+	        <!-- Collect the nav links, forms, and other content for toggling -->
+	        <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+	            <ul class="nav navbar-nav">
+	                <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+	                <li class="hidden">
+	                    <a href="page-top"></a>
+	                </li>                
+	                <li class="page-scroll">
+	                    <a href="~/#info">Info</a>
+	                </li>
+	                <li class="page-scroll">
+	                    <a href="~/#subscribe-section">Subscribe</a>
+	                </li>
+	                <li class="page-scroll">
+	                    <a href="~/#about">About</a>
+	                </li>
+	                <li class="page-scroll">
+	                    <a href="/team">Team</a>
+	                </li>
+	            </ul>
+	        </div>
+	        <!-- /.navbar-collapse -->
+	    </div>
+	    <!-- /.container -->
+	</div>
+
+    <div ng-view></div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="lib/jquery/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="lib/cryptojslib/core-min.js"></script>
+    <script src="lib/cryptojslib/sha256-min.js"></script>
+    <script src="lib/bootstrap/bootstrap.js"></script>
+    <script src="lib/jquery.easing/jquery.easing.min.js"></script>
+    <script src="lib/highcharts.com/highcharts.src.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+  	<script src="lib/angular-resource/angular-resource.js"></script>
+    <script src="lib/highcharts-ng/highcharts-ng.js"></script>
+
+    <script src="js/bankheadApp.js"></script>
+    <script src="js/controller/navbar.js"></script>
+    <script src="js/controller/contact.js"></script>
+    <script src="js/controller/voteDemo.js"></script>
+    <script src="js/controller/login.js"></script>
+    <script src="js/controller/enroll.js"></script>
+    <script src="js/controller/browse.js"></script>
+    <script src="js/directives/navbar.js"></script>
+    <script src="js/services/pageTitle.js"></script>
+    <script src="js/services/contacts.js"></script>
+    <script src="js/services/chart.js"></script>
+    <script src="js/landing.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one
+  or more contributor license agreements.  See the NOTICE file
+  distributed with this work for additional information
+  regarding copyright ownership.  The ASF licenses this file
+  to you under the Apache License, Version 2.0 (the
+  "License"); you may not use this file except in compliance
+  with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing,
+  software distributed under the License is distributed on an
+  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  KIND, either express or implied.  See the License for the
+  specific language governing permissions and limitations
+  under the License.
+-->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.bankhead</groupId>
+    <artifactId>bankhead-web</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>bankhead-web-main</artifactId>
+  <packaging>war</packaging>
+  <build>
+    <plugins>
+      <plugin>
+	    <groupId>org.codehaus.mojo</groupId>
+	    <artifactId>exec-maven-plugin</artifactId>
+	    <version>1.2.1</version>
+	    <executions>
+          <execution>
+		    <id>npm-install</id>
+		    <phase>prepare-package</phase>
+		    <goals>
+		        <goal>exec</goal>
+		    </goals>
+		    <configuration>
+		        <executable>npm</executable>
+		        <arguments>
+		            <argument>install</argument>
+		        </arguments>
+		    </configuration>
+		  </execution>
+          <execution>
+		    <id>bower-install</id>
+		    <phase>prepare-package</phase>
+		    <goals>
+		        <goal>exec</goal>
+		    </goals>
+		    <configuration>
+		        <executable>bower</executable>
+		        <arguments>
+		            <argument>install</argument>
+		        </arguments>
+		    </configuration>
+		  </execution>
+          <execution>
+		    <id>grunt-build</id>
+		    <phase>prepare-package</phase>
+		    <goals>
+		        <goal>exec</goal>
+		    </goals>
+		    <configuration>
+		        <executable>grunt</executable>
+            <arguments>
+                <argument>--target=target/${project.artifactId}-${project.version}</argument>
+            </arguments>
+		    </configuration>
+		  </execution>
+        </executions>
+      </plugin>
+	  <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.4</version>
+        <configuration>
+        	<attachClasses>true</attachClasses>
+            <webResources>
+              <!-- not needed - grunt copies directly now 
+                <resource>
+                    <directory>target/dist</directory>
+                </resource>
+              -->
+            </webResources>
+            <!-- these are excluded because grunt will pick them -->
+            <warSourceExcludes>main/image/**, main/js/**, main/css/**</warSourceExcludes>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-clean-plugin</artifactId>
+        <version>2.5</version>
+        <configuration>
+          <filesets>
+            <fileset>
+              <directory>target/dist</directory>
+            </fileset>
+            <fileset>
+              <directory>node_modules</directory>
+            </fileset>
+          </filesets>
+        </configuration>
+      </plugin>
+	</plugins>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.tomcat.maven</groupId>
+          <artifactId>tomcat7-maven-plugin</artifactId>
+          <configuration>
+            <warSourceDirectory>${project.build.directory}/${project.artifactId}-${project.version}</warSourceDirectory>
+            <path>/</path>
+            <port>9090</port>
+          </configuration>
+        </plugin>
+
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <dependencies>
+
+
+      <!-- Tomcat -->
+      <dependency>
+          <groupId>org.apache.tomcat.embed</groupId>
+          <artifactId>tomcat-embed-core</artifactId>
+          <scope>test</scope>
+      </dependency>
+      <dependency>
+          <groupId>org.apache.tomcat</groupId>
+          <artifactId>tomcat-juli</artifactId>
+          <scope>test</scope>
+      </dependency>
+	  <dependency>
+		<groupId>org.apache.tomcat</groupId>
+		<artifactId>tomcat-catalina</artifactId>
+		<scope>provided</scope>
+	  </dependency>
+      <dependency>
+          <groupId>org.apache.tomcat.embed</groupId>
+          <artifactId>tomcat-embed-logging-juli</artifactId>
+          <scope>test</scope>
+      </dependency>
+      <dependency>
+          <groupId>javax.servlet</groupId>
+          <artifactId>servlet-api</artifactId>
+          <scope>provided</scope>
+      </dependency>
+      <dependency>
+	    <groupId>org.tuckey</groupId>
+	    <artifactId>urlrewritefilter</artifactId>
+	  </dependency>
+
+      <!-- Jersey -->
+      <dependency>
+          <groupId>com.sun.jersey</groupId>
+          <artifactId>jersey-core</artifactId>
+      </dependency>
+      <dependency>
+          <groupId>com.sun.jersey</groupId>
+          <artifactId>jersey-server</artifactId>
+      </dependency>
+      <dependency>
+          <groupId>com.sun.jersey.contribs</groupId>
+          <artifactId>jersey-guice</artifactId>
+      </dependency>
+
+      <!-- Guice -->
+      <dependency>
+          <groupId>com.google.inject</groupId>
+          <artifactId>guice</artifactId>
+      </dependency>
+      <dependency>
+          <groupId>com.google.inject.extensions</groupId>
+          <artifactId>guice-servlet</artifactId>
+      </dependency>
+
+      <!-- Jackson -->
+      <dependency>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-core</artifactId>
+      </dependency>
+      <dependency>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-databind</artifactId>
+      </dependency>
+      <dependency>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-annotations</artifactId>
+      </dependency>
+      <dependency>
+          <groupId>com.fasterxml.jackson.jaxrs</groupId>
+          <artifactId>jackson-jaxrs-json-provider</artifactId>
+      </dependency>
+
+      <!-- Hibernate -->
+      <dependency>
+          <groupId>mysql</groupId>
+          <artifactId>mysql-connector-java</artifactId>
+      </dependency>
+      <dependency>
+          <groupId>org.hibernate</groupId>
+          <artifactId>hibernate-core</artifactId>
+      </dependency>
+      <dependency>
+          <groupId>org.hibernate</groupId>
+          <artifactId>hibernate-entitymanager</artifactId>
+      </dependency>
+
+      <!-- Common Utils -->
+      <dependency>
+          <groupId>com.google.guava</groupId>
+          <artifactId>guava</artifactId>
+      </dependency>
+      <dependency>
+          <groupId>commons-codec</groupId>
+          <artifactId>commons-codec</artifactId>
+      </dependency>
+      <dependency>
+          <groupId>commons-lang</groupId>
+          <artifactId>commons-lang</artifactId>
+      </dependency>
+      <dependency>
+		<groupId>commons-validator</groupId>
+		<artifactId>commons-validator</artifactId>
+	  </dependency>
+	  <dependency>
+		<groupId>commons-configuration</groupId>
+		<artifactId>commons-configuration</artifactId>
+	  </dependency>
+            
+
+      <!-- Security -->
+      <dependency>
+          <groupId>org.bouncycastle</groupId>
+          <artifactId>bcprov-jdk16</artifactId>
+      </dependency>
+
+      <!-- Testing -->
+      <dependency>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+          <scope>test</scope>
+      </dependency>
+
+      <!-- Logging -->
+      <dependency>
+          <groupId>log4j</groupId>
+          <artifactId>log4j</artifactId>
+      </dependency>
+
+      <!-- Sailthru -->
+      <dependency>
+        <groupId>com.sailthru.client</groupId>
+        <artifactId>sailthru-java-client</artifactId>
+      </dependency>
+            
+  </dependencies>
+
+
+
+</project>
