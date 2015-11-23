@@ -19,6 +19,7 @@ import com.bankhead.data.model.Town;
 import com.bankhead.data.model.VoteRecord;
 import com.bankhead.data.model.Voter;
 import com.bankhead.data.model.WebSession;
+import com.bankhead.data.model.cognition.Observation;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
@@ -46,6 +47,7 @@ public class HibernateDataStore implements DataStore {
         configuration.addAnnotatedClass(VoteRecord.class);
         configuration.addAnnotatedClass(Account.class);
         configuration.addAnnotatedClass(Contact.class);
+        configuration.addAnnotatedClass(Observation.class);
 	    configuration.configure();
 	    serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();        
 	    sessionFactory = configuration.buildSessionFactory(serviceRegistry);
@@ -77,7 +79,14 @@ public class HibernateDataStore implements DataStore {
         session.close();
         return bills;
     }
-
+    
+    public List<Observation> loadObservations(String noun) {
+    	Session session = sessionFactory.openSession();
+        Query query = session.createQuery("select observation from Observation observation");
+        List<Observation> observations = query.list();
+        session.close();
+        return observations;
+    }
 
     public Session createSession() {
         Session session = sessionFactory.openSession();
