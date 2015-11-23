@@ -1,39 +1,41 @@
 <!DOCTYPE html>
 <html ng-app id="ng-app">
 <head>
-    <title>bankhead</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap -->
-    <link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="css/bankhead.css" rel="stylesheet">
-	<script src="lib/d3.v3/d3.v3.min.js"></script>
-	<script src="lib/d3.v3/topojson.v1.min.js"></script>
-	<style>
-		.background {
-		  fill: none;
-		  pointer-events: all;
-		}
-		path {
-		  stroke-linejoin: round;
-		}	
-		.districts {
-		  fill: #bbb;
-		}
- 
-		.districts :hover {
-		  fill: steelblue;
-		}
-	
-		.districts .active {
-		  fill: darkblue;
-		}
- 
-		.district-boundaries {
-		  pointer-events: none;
-		  fill: none;
-		  stroke: #ddd;
-		}
-	</style>
+<title>bankhead</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Bootstrap -->
+<link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+<link href="css/bankhead.css" rel="stylesheet">
+<script src="lib/d3.v3/d3.v3.min.js"></script>
+<script src="lib/d3.v3/topojson.v1.min.js"></script>
+<style>
+.background {
+	fill: none;
+	pointer-events: all;
+}
+
+path {
+	stroke-linejoin: round;
+}
+
+.districts {
+	fill: #bbb;
+}
+
+.districts :hover {
+	fill: steelblue;
+}
+
+.districts .active {
+	fill: darkblue;
+}
+
+.district-boundaries {
+	pointer-events: none;
+	fill: none;
+	stroke: #ddd;
+}
+</style>
 </head>
 <body>
 	<script src="http://d3js.org/d3.v3.min.js"></script>

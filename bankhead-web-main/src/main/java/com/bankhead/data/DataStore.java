@@ -8,6 +8,7 @@ import com.bankhead.data.model.Account;
 import com.bankhead.data.model.Bill;
 import com.bankhead.data.model.BillVersion;
 import com.bankhead.data.model.Contact;
+import com.bankhead.data.model.cognition.Observation;
 
 /**
  * Created By: jordancote
@@ -32,5 +33,7 @@ public interface DataStore {
     public Contact loadContact(Session session, String email);
 
     public int invalidateWebSessions(Session session, long accountId);
+
+	public List<Observation> loadObservations(String noun);
 
 }

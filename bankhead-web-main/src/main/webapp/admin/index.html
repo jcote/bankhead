@@ -1,42 +1,46 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="bankheadAdminApp">
 <head>
-    <title>bankhead - Admin</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<title>bankhead - Admin</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
 
-    <!-- Add custom CSS here -->
-    <link href="../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="css/bankhead.css" rel="stylesheet">
- 	<link href="css/bankhead-admin.css" rel="stylesheet">
-    <link rel="stylesheet" href="../lib/font-awesome/css/font-awesome.min.css">
-   	<link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
+<!-- Add custom CSS here -->
+<link href="../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+<link href="css/bankhead.css" rel="stylesheet">
+<link href="css/bankhead-admin.css" rel="stylesheet">
+<link rel="stylesheet"
+	href="../lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
 </head>
 
 
 <body>
-<!-- Sidebar -->
-      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="index.html">bankhead Admin</a>
-        </div>
+	<!-- Sidebar -->
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target=".navbar-ex1-collapse">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="index.html">bankhead Admin</a>
+		</div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
-          <ul class="nav navbar-nav side-nav">
-            <li class="active"><a href="index.html"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-            <li><a href="forms.html"><i class="fa fa-edit"></i> Create</a></li>
-            <li><a href="charts.html"><i class="fa fa-bar-chart-o"></i> Site Analytics</a></li>
-            <!--li><a href="charts.html"><i class="fa fa-bar-chart-o"></i> Charts</a></li>
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul class="nav navbar-nav side-nav">
+				<li class="active"><a href="index.html"><i
+						class="fa fa-dashboard"></i> Dashboard</a></li>
+				<li><a href="forms.html"><i class="fa fa-edit"></i> Create</a></li>
+				<li><a href="charts.html"><i class="fa fa-bar-chart-o"></i>
+						Site Analytics</a></li>
+				<!--li><a href="charts.html"><i class="fa fa-bar-chart-o"></i> Charts</a></li>
             <li><a href="tables.html"><i class="fa fa-table"></i> Tables</a></li>
             <li><a href="forms.html"><i class="fa fa-edit"></i> Forms</a></li>
             <li><a href="typography.html"><i class="fa fa-font"></i> Typography</a></li>
@@ -52,66 +56,64 @@
                 <li><a href="#">Last Item</a></li>
               </ul>
             </li-->
-          </ul>
+			</ul>
 
-          <ul class="nav navbar-nav navbar-right navbar-user">
-            <li class="dropdown messages-dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> Messages <span class="badge">7</span> <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li class="dropdown-header">7 New Messages</li>
-                <li class="message-preview">
-                  <a href="#">
-                    <span class="avatar"><img src="http://placehold.it/50x50"></span>
-                    <span class="name">Jen Dorley:</span>
-                    <span class="message">bankhead new feature released...</span>
-                    <span class="time"><i class="fa fa-clock-o"></i> 4:34 PM</span>
-                  </a>
-                </li>
-                <li class="divider"></li>
-                <li class="message-preview">
-                  <a href="#">
-                    <span class="avatar"><img src="http://placehold.it/50x50"></span>
-                    <span class="name">bankhead Team:</span>
-                    <span class="message">Poll results for bill 1234 are in...</span>
-                    <span class="time"><i class="fa fa-clock-o"></i> 4:34 PM</span>
-                  </a>
-                </li>
-                <li class="divider"></li>
-                <li class="message-preview">
-                  <a href="#">
-                    <span class="avatar"><img src="http://placehold.it/50x50"></span>
-                    <span class="name">bankhead Team:</span>
-                    <span class="message">You created a new bill poll ending 3/21...</span>
-                    <span class="time"><i class="fa fa-clock-o"></i> 4:34 PM</span>
-                  </a>
-                </li>
-                <li class="divider"></li>
-                <li><a href="#">View Inbox <span class="badge">7</span></a></li>
-              </ul>
-            </li>
-            
-            <li class="dropdown user-dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
-                <li><a href="#"><i class="fa fa-envelope"></i> Inbox <span class="badge">7</span></a></li>
-                <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
-                <li class="divider"></li>
-                <li><a href="#"><i class="fa fa-power-off"></i> Log Out</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div><!-- /.navbar-collapse -->
-      </nav>
+			<ul class="nav navbar-nav navbar-right navbar-user">
+				<li class="dropdown messages-dropdown"><a href="#"
+					class="dropdown-toggle" data-toggle="dropdown"><i
+						class="fa fa-envelope"></i> Messages <span class="badge">7</span>
+						<b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li class="dropdown-header">7 New Messages</li>
+						<li class="message-preview"><a href="#"> <span
+								class="avatar"><img src="http://placehold.it/50x50"></span>
+								<span class="name">Jen Dorley:</span> <span class="message">bankhead
+									new feature released...</span> <span class="time"><i
+									class="fa fa-clock-o"></i> 4:34 PM</span>
+						</a></li>
+						<li class="divider"></li>
+						<li class="message-preview"><a href="#"> <span
+								class="avatar"><img src="http://placehold.it/50x50"></span>
+								<span class="name">bankhead Team:</span> <span class="message">Poll
+									results for bill 1234 are in...</span> <span class="time"><i
+									class="fa fa-clock-o"></i> 4:34 PM</span>
+						</a></li>
+						<li class="divider"></li>
+						<li class="message-preview"><a href="#"> <span
+								class="avatar"><img src="http://placehold.it/50x50"></span>
+								<span class="name">bankhead Team:</span> <span class="message">You
+									created a new bill poll ending 3/21...</span> <span class="time"><i
+									class="fa fa-clock-o"></i> 4:34 PM</span>
+						</a></li>
+						<li class="divider"></li>
+						<li><a href="#">View Inbox <span class="badge">7</span></a></li>
+					</ul></li>
 
-	 <div ng-view></div>
+				<li class="dropdown user-dropdown"><a href="#"
+					class="dropdown-toggle" data-toggle="dropdown"><i
+						class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
+						<li><a href="#"><i class="fa fa-envelope"></i> Inbox <span
+								class="badge">7</span></a></li>
+						<li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
+						<li class="divider"></li>
+						<li><a href="#"><i class="fa fa-power-off"></i> Log Out</a></li>
+					</ul></li>
+			</ul>
+		</div>
+		<!-- /.navbar-collapse -->
+	</nav>
+
+	<div ng-view></div>
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="../lib/jquery/jquery-1.10.2.js"></script>
 	<!-- Page Specific Plugins -->
-<script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
-	
+	<script
+		src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+	<script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
+
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="../lib/cryptojs/sha256.js"></script>
 	<script src="../lib/bootstrap/js/bootstrap.min.js"></script>

@@ -3,11 +3,12 @@ package com.bankhead.api;
 import org.apache.catalina.servlets.DefaultServlet;
 
 import com.bankhead.Constants;
-import com.bankhead.api.resource.BillResource;
 import com.bankhead.api.resource.ContactResource;
 import com.bankhead.api.resource.HelloResource;
+import com.bankhead.api.resource.ObservationResource;
 import com.bankhead.data.DataStore;
 import com.bankhead.data.HibernateDataStore;
+import com.bankhead.data.model.cognition.Observation;
 import com.bankhead.filter.SecurityContextFilter;
 import com.bankhead.servlet.EnrollServlet;
 import com.bankhead.servlet.LoginServlet;
@@ -24,7 +25,7 @@ public class GuiceServletModule extends ServletModule {
 
         // hook Resources to Guice Servlet
         bind(HelloResource.class);
-        bind(BillResource.class);
+        bind(ObservationResource.class);
         bind(ContactResource.class);
 
         // hook Jersey into Guice Servlet

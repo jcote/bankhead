@@ -4,28 +4,28 @@
 
 <urlrewrite>
 
-    
-    <rule>
-        <from>^/admin/?$</from>
-        <to type="forward">%{context-path}/admin/index.html</to>
-    </rule>
-        
-    <rule>
-        <from>^/admin/(.+)$</from>
-        <to type="forward">%{context-path}/admin/$1</to>
-    </rule>
 
-    <rule>
-        <from>^/?$</from>
-        <to type="forward">%{context-path}/main/index.html</to>
-    </rule>
-    
-    <rule>
-        <from>^/(css|js|image|partials)/(.*)$</from>
-        <to type="forward">%{context-path}/main/$1/$2</to>
-    </rule>
+	<rule>
+		<from>^/admin/?$</from>
+		<to type="forward">%{context-path}/admin/index.html</to>
+	</rule>
 
-    
-    
+	<rule>
+		<from>^/admin/(.+)$</from>
+		<to type="forward">%{context-path}/admin/$1</to>
+	</rule>
+
+	<rule>
+		<from>^/?$</from>
+		<to type="forward">%{context-path}/main/index.html</to>
+	</rule>
+
+	<rule>
+		<from>^/(css|js|image|partials)/(.*)$</from>
+		<to type="forward">%{context-path}/main/$1/$2</to>
+	</rule>
+
+
+
 </urlrewrite>
 
