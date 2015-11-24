@@ -24,6 +24,7 @@ import com.bankhead.data.model.Bill;
 import com.bankhead.data.model.BillVersion;
 import com.bankhead.data.model.cognition.Observation;
 import com.bankhead.data.model.cognition.element.Element;
+import com.bankhead.data.model.cognition.element.ObservationNoun;
 import com.bankhead.language.Classifier;
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
@@ -56,11 +57,16 @@ public class ObservationResource {
     public Response postObservation(ObservationJson observationJson) {
     	Observation observation = new Observation();
     	observation.setText(observationJson.getText());
+    	dataStore.save(observation);
     	Map<String,List<String>> nounsByTypeMap = classifier.classify(observationJson.getText());
     	for (String k : nounsByTypeMap.keySet()) {
-    		observation.setType(k);
-    		observation.setNouns(Lists.newArrayList(nounsByTypeMap.get(k)));
-    		dataStore.save(observation);
+    		ObservationNoun observationNoun = new ObservationNoun();
+    		observationNoun.setObservation(observation);
+    		for (String v : nounsByTypeMap.get(k)) {
+	    		observationNoun.setType(k);
+	    		observationNoun.setText(v);
+	    		dataStore.save(observationNoun);
+    		}
     	}
 
     	return Response.ok().build();

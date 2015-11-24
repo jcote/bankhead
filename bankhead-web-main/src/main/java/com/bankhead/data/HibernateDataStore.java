@@ -20,6 +20,7 @@ import com.bankhead.data.model.VoteRecord;
 import com.bankhead.data.model.Voter;
 import com.bankhead.data.model.WebSession;
 import com.bankhead.data.model.cognition.Observation;
+import com.bankhead.data.model.cognition.element.ObservationNoun;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
@@ -39,15 +40,11 @@ public class HibernateDataStore implements DataStore {
         }
         Configuration configuration = new Configuration();
         configuration.setNamingStrategy(new ImprovedNamingStrategy());
-        configuration.addAnnotatedClass(Bill.class);
-        configuration.addAnnotatedClass(BillVersion.class);
-        configuration.addAnnotatedClass(Voter.class);
         configuration.addAnnotatedClass(WebSession.class);
-        configuration.addAnnotatedClass(Town.class);
-        configuration.addAnnotatedClass(VoteRecord.class);
         configuration.addAnnotatedClass(Account.class);
         configuration.addAnnotatedClass(Contact.class);
         configuration.addAnnotatedClass(Observation.class);
+        configuration.addAnnotatedClass(ObservationNoun.class);
 	    configuration.configure();
 	    serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();        
 	    sessionFactory = configuration.buildSessionFactory(serviceRegistry);
@@ -82,7 +79,9 @@ public class HibernateDataStore implements DataStore {
     
     public List<Observation> loadObservations(String noun) {
     	Session session = sessionFactory.openSession();
-        Query query = session.createQuery("select observation from Observation observation");
+        Query query = session.createQuery("select distinct observation from Observation observation, ObservationNoun observation_noun"
+        		+ " where observation_noun.text = :NOUNTEXT and observation.id = observation_noun.observation_id"
+        		).setString("NOUNTEXT", noun);
         List<Observation> observations = query.list();
         session.close();
         return observations;

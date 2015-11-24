@@ -37,9 +37,7 @@ public class NlpTestCli {
 		Map<String, List<String>> m = c.classify(text);
 		System.out.println(m.values().size());
 		for (String k : m.keySet()) {
-			for (String v : m.get(k)) {
-				System.out.println(k + "->" + m.get(k));
-			}
+			System.out.println(k + "->" + m.get(k));
 		}
 		
 	}

@@ -25,11 +25,6 @@ public class Observation extends Cognition {
     @Basic
     private String type;
 	
-    @ElementCollection
-    @CollectionTable(name="observation_nouns", joinColumns=@JoinColumn(name="observation_id"))
-    @Column(name="noun")
-	private List<String> nouns;
-	
 	public String getText() {
 		return text;
 	}
@@ -41,18 +36,6 @@ public class Observation extends Cognition {
 	}
 	public void setId(long id) {
 		this.id = id;
-	}
-	public List<String> getNouns() {
-		return nouns;
-	}
-	public void setNouns(List<String> nouns) {
-		this.nouns = nouns;
-	}
-	public String getType() {
-		return type;
-	}
-	public void setType(String type) {
-		this.type = type;
 	}
 
 	
