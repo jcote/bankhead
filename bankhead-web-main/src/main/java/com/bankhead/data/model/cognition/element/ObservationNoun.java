@@ -19,7 +19,7 @@ import com.bankhead.data.model.Account;
 import com.bankhead.data.model.cognition.Observation;
 
 @Entity
-@Table(name="observation_nouns")
+@Table(name="observation_noun")
 public class ObservationNoun extends DataModel{
     @Id
     @GeneratedValue

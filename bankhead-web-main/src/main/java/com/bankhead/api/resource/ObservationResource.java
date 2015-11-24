@@ -17,11 +17,10 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import com.bankhead.api.json.BillJson;
+import org.hibernate.Session;
+
 import com.bankhead.api.json.ObservationJson;
 import com.bankhead.data.DataStore;
-import com.bankhead.data.model.Bill;
-import com.bankhead.data.model.BillVersion;
 import com.bankhead.data.model.cognition.Observation;
 import com.bankhead.data.model.cognition.element.Element;
 import com.bankhead.data.model.cognition.element.ObservationNoun;
@@ -57,17 +56,19 @@ public class ObservationResource {
     public Response postObservation(ObservationJson observationJson) {
     	Observation observation = new Observation();
     	observation.setText(observationJson.getText());
-    	dataStore.save(observation);
+    	Session session = dataStore.createSession();
+    	session.saveOrUpdate(observation);
     	Map<String,List<String>> nounsByTypeMap = classifier.classify(observationJson.getText());
     	for (String k : nounsByTypeMap.keySet()) {
-    		ObservationNoun observationNoun = new ObservationNoun();
-    		observationNoun.setObservation(observation);
     		for (String v : nounsByTypeMap.get(k)) {
+        		ObservationNoun observationNoun = new ObservationNoun();
+        		observationNoun.setObservation(observation);
 	    		observationNoun.setType(k);
 	    		observationNoun.setText(v);
-	    		dataStore.save(observationNoun);
+	    		session.saveOrUpdate(observationNoun);
     		}
     	}
+    	dataStore.closeSession(session);
 
     	return Response.ok().build();
     }
