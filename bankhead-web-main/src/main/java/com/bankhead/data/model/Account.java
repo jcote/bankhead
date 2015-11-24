@@ -23,10 +23,6 @@ public class Account extends DataModel implements java.security.Principal {
 	private String username;
 
     @OneToOne
-    @JoinColumn(name = "voter_id")
-    private Voter voter;
-
-    @OneToOne
     @JoinColumn(name = "last_web_session_id")
     private WebSession lastWebSession;
 
@@ -113,13 +109,6 @@ public class Account extends DataModel implements java.security.Principal {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-    public Voter getVoter() {
-        return voter;
-    }
-
-    public void setVoter(Voter voter) {
-        this.voter = voter;
     }
 
     public WebSession getLastWebSession() {

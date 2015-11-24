@@ -5,8 +5,6 @@ import java.util.List;
 import org.hibernate.Session;
 
 import com.bankhead.data.model.Account;
-import com.bankhead.data.model.Bill;
-import com.bankhead.data.model.BillVersion;
 import com.bankhead.data.model.Contact;
 import com.bankhead.data.model.cognition.Observation;
 
@@ -17,10 +15,6 @@ import com.bankhead.data.model.cognition.Observation;
 public interface DataStore {
 
     public void save(DataModel model);
-
-    public void save(Bill bill, BillVersion billVersion);
-
-    public List<Bill> loadCurrentBills();
 
     public Session createSession();
 

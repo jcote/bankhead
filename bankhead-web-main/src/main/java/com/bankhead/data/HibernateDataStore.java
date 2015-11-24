@@ -12,12 +12,7 @@ import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
 import com.bankhead.data.model.Account;
-import com.bankhead.data.model.Bill;
-import com.bankhead.data.model.BillVersion;
 import com.bankhead.data.model.Contact;
-import com.bankhead.data.model.Town;
-import com.bankhead.data.model.VoteRecord;
-import com.bankhead.data.model.Voter;
 import com.bankhead.data.model.WebSession;
 import com.bankhead.data.model.cognition.Observation;
 import com.bankhead.data.model.cognition.element.ObservationNoun;
@@ -58,29 +53,11 @@ public class HibernateDataStore implements DataStore {
 		session.close();
 	}
 
-    public void save(Bill bill, BillVersion billVersion) {
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        bill.setCurrentVersion(billVersion);
-        billVersion.setParentBill(bill);
-        session.saveOrUpdate(bill);
-        session.saveOrUpdate(billVersion);
-        session.getTransaction().commit();
-        session.close();
-    }
-
-    public List<Bill> loadCurrentBills() {
-        Session session = sessionFactory.openSession();
-        Query query = session.createQuery("select bill from Bill bill");
-        List<Bill> bills = query.list();
-        session.close();
-        return bills;
-    }
     
     public List<Observation> loadObservations(String noun) {
     	Session session = sessionFactory.openSession();
         Query query = session.createQuery("select distinct observation from Observation observation, ObservationNoun observation_noun"
-        		+ " where observation_noun.text = :NOUNTEXT and observation.id = observation_noun.observation_id"
+        		+ " where observation_noun.text = :NOUNTEXT and observation.id = observation_noun.observation"
         		).setString("NOUNTEXT", noun);
         List<Observation> observations = query.list();
         session.close();
