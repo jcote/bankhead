@@ -56,8 +56,11 @@ public class HibernateDataStore implements DataStore {
     
     public List<Observation> loadObservations(String noun) {
     	Session session = sessionFactory.openSession();
-        Query query = session.createQuery("select distinct observation from Observation observation, ObservationNoun observation_noun"
-        		+ " where observation_noun.text = :NOUNTEXT and observation.id = observation_noun.observation"
+        Query query = session.createQuery(
+        		  "select o "
+        		+ "from ObservationNoun n "
+        		+ "inner join n.observation o "
+        		+ "where n.text = :NOUNTEXT"
         		).setString("NOUNTEXT", noun);
         List<Observation> observations = query.list();
         session.close();

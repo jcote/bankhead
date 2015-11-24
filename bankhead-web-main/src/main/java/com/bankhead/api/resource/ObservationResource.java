@@ -13,6 +13,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -54,10 +55,13 @@ public class ObservationResource {
     @POST
     @Path("observation")
     public Response postObservation(ObservationJson observationJson) {
+    	// observation table
     	Observation observation = new Observation();
     	observation.setText(observationJson.getText());
+    	dataStore.save(observation);
+    	
+    	// observation nouns table
     	Session session = dataStore.createSession();
-    	session.saveOrUpdate(observation);
     	Map<String,List<String>> nounsByTypeMap = classifier.classify(observationJson.getText());
     	for (String k : nounsByTypeMap.keySet()) {
     		for (String v : nounsByTypeMap.get(k)) {
@@ -74,9 +78,10 @@ public class ObservationResource {
     }
 
     @GET
-    @Path("observation")
-    public List<ObservationJson> getObservations(String noun) {
-        List<Observation> observations = dataStore.loadObservations(noun);
+    @Path("observation/by/noun/{noun:[a-zA-Z_-]+}")
+    public List<ObservationJson> getObservations(@PathParam("noun") String noun) {
+    	String transformedNoun = noun.replace('_', ' ');
+        List<Observation> observations = dataStore.loadObservations(transformedNoun);
         List<ObservationJson> observationJsons = new ArrayList<>();
         for (Observation observation : observations) {
             ObservationJson observationJson = new ObservationJson();

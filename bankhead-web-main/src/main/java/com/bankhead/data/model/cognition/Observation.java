@@ -22,9 +22,6 @@ public class Observation extends Cognition {
     @Basic
 	private String text;
     
-    @Basic
-    private String type;
-	
 	public String getText() {
 		return text;
 	}
