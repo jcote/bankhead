@@ -56,9 +56,12 @@ public class ObservationResource {
     public Response postObservation(ObservationJson observationJson) {
     	Observation observation = new Observation();
     	observation.setText(observationJson.getText());
-    	Map<String,String> nounsByTypeMap = classifier.classify(observationJson.getText());
-    	observation.setNouns(Lists.newArrayList(nounsByTypeMap.values()));
-        dataStore.save(observation);
+    	Map<String,List<String>> nounsByTypeMap = classifier.classify(observationJson.getText());
+    	for (String k : nounsByTypeMap.keySet()) {
+    		observation.setType(k);
+    		observation.setNouns(Lists.newArrayList(nounsByTypeMap.get(k)));
+    		dataStore.save(observation);
+    	}
 
     	return Response.ok().build();
     }
