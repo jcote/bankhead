@@ -1,9 +1,9 @@
 /*###################################################################
-Subscribe Container
+Observation Container
 ###################################################################*/
 
-.subscribe-container {
-    
+.observation-container {
+    background-color: black;
     padding-top: 210px;
     padding-bottom: 210px;
     background-repeat: no-repeat;
@@ -12,9 +12,9 @@ Subscribe Container
     background-size: cover;
 }
 
-.subscribe-container h2 {
+.observation-container h2 {
     text-align: center;
-    background-color: #000;
+    color: #fff;
     font-family: 'Akkurat', sans-serif;
     font-weight: 200;
     text-transform: lowercase;
@@ -25,35 +25,35 @@ Subscribe Container
 
 
 
-.subscribe-container ::-webkit-input-placeholder {
+.observation-container ::-webkit-input-placeholder {
    font-family: 'Akkurat', sans-serif;
    text-transform: lowercase;
    color: #515050;
    font-weight: 300;
 }
 
-.subscribe-container :-moz-placeholder { /* Firefox 18- */
+.observation-container :-moz-placeholder { /* Firefox 18- */
    font-family: 'Akkurat', sans-serif;  
    text-transform: lowercase;
    color: #515050;
    font-weight: 300;
 }
 
-.subscribe-container ::-moz-placeholder {  /* Firefox 19+ */
+.observation-container ::-moz-placeholder {  /* Firefox 19+ */
    font-family: 'Akkurat', sans-serif;  
    text-transform: lowercase;
    color: #515050;
    font-weight: 300;
 }
 
-.subscribe-container :-ms-input-placeholder {  
+.observation-container :-ms-input-placeholder {  
    font-family: 'Akkurat', sans-serif;  
    text-transform: lowercase;
    color: #515050;
    font-weight: 300;
 }
 
-.inputSection input {
+.inputSection span {
     font-size: 25px;
     font-family: 'Akkurat', sans-serif;
     color: #515050;
@@ -96,22 +96,20 @@ form {
 }
 
 /* use this to get basic styling on all basic form elements */
-input[type="email"],
-input[type="zip"],
-textarea {
+span[type="observe"] {
   -webkit-appearance: none;
   -webkit-border-radius: 0;
-  border-radius: 0;
+  border-radius: 5;
   background-color: white;
   font-family: inherit;
-  border: 1px solid #cccccc;
-  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  border: 0px solid #cccccc;
+  -webkit-box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.25) inset,  0 0 30px 15px rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.25) inset,  0 0 30px 15px rgba(255, 255, 255, 0.25);
   color: rgba(0, 0, 0, 0.75);
   display: block;
   font-size: 2em;
   margin: 0 0 1em 0;
-  padding: 0.5em;
+  padding: 0.25em;
   height: 3em;
   width: 100%;
   -moz-box-sizing: border-box;
@@ -121,8 +119,7 @@ textarea {
   -moz-transition: -moz-box-shadow 0.45s, border-color 0.45s ease-in-out;
   transition: box-shadow 0.45s, border-color 0.45s ease-in-out; }
 
-  input[type="email"]:focus,
-  input[type="zip"]:focus,
+  input[type="observe"]:focus,
   textarea:focus {
     -webkit-box-shadow: 0 0 5px #999999;
     -moz-box-shadow: 0 0 5px #999999;
@@ -136,7 +133,6 @@ textarea {
     border-color: #999999;
     outline: none; }
 
-  input[type="email"][disabled],
-  input[type="zip"][disabled],
+  input[type="observe"][disabled],
   textarea[disabled] {
     background-color: #dddddd; }
