@@ -7,7 +7,6 @@
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2">
 					<h1 class="brand-heading">Bankhead</h1>
-					<p class="intro-text">Voice Your Opinion on Local Issues</p>
 				</div>
 			</div>
 		</div>
@@ -15,41 +14,27 @@
 </section>
 
 
-<section id="info" class="container content-section text-center">
-	<div class="container marketing">
+<!-- Observation Container -->
+<section ng-init="item.text = 'base';" id="observation-section"
+	class="container content-section text-center">
+	<div class="observe-body" id="observe"  ng-controller="ObservationCtrl">
+		<h2>Enter your observation</h2>
 		<div class="row">
-			<div class="col-lg-12">
-				<h1>bankhead is a brand new way to interact with your elected
-					officials to</h1>
-				<h2></h2>
-			</div>
+			<form name="observeForm" novalidate role="form">
+				<div class="col-lg-6 columns inputSection">
+					<span contenteditable="true" type="observe" name="text" ng-model="item.text" ng-focus="onFocusHandle(item)"></span>
+				</div>
+				<div class="col-lg-3 columns buttonSection">
+					<button type="submit" ng-click="create(item)" value="observation">Send</button>
+				</div>
+				<div id="observe_errors_text" class="col-lg-9 columns">
+					<div ng-class="alert-danger"
+						ng-show="observeForm.text.$invalid && !observeForm.text.$pristine">Invalid entry</div>
+					<div ng-class="alert-success"
+						ng-show="observeForm.text.$valid && !observeForm.text.$pristine">Ok..</div>
+				</div>
+			</form>
 		</div>
-		<div class="row">
-			<div class="col-lg-4">
-				<img class="img-circle" data-src="holder.js/140x140" alt="">
-				<h2>Find a Bill</h2>
-				<p>Read the text of a Bill that matters to you, see comments
-					from your representative and others, and view a layman's summary of
-					the Bill.</p>
-			</div>
-			<!-- /.col-lg-4 -->
-			<div class="col-lg-4">
-				<img class="img-circle" data-src="holder.js/140x140" alt="">
-				<h2>Cast Your Vote</h2>
-				<p>Have a measurable impact on the decision making process on
-					this law by securely voting on the Bill. Running results will be
-					tabulated in real-time.</p>
-			</div>
-			<!-- /.col-lg-4 -->
-			<div class="col-lg-4">
-				<img class="img-circle" data-src="holder.js/140x140" alt="">
-				<h2>Follow Up</h2>
-				<p>See final poll results and current status of the Bill in the
-					legislature, including the actions taken by your representative.</p>
-			</div>
-			<!-- /.col-lg-4 -->
-		</div>
-		<!-- /.row -->
 	</div>
 </section>
 
@@ -152,30 +137,6 @@
 	</div>
 </section>
 
-<!-- Observation Container -->
-<section id="observation-section"
-	class="container content-section text-center">
-	<div id="observe" ng-controller="ObservationCtrl">
-		<h2>Enter your observation</h2>
-		<div class="row">
-			<form name="observeForm" novalidate role="form">
-				<div class="col-lg-9 columns inputSection">
-					<input type="text" name="text" ng-model="item.text"
-						placeholder="your email" required>
-				</div>
-				<div class="col-lg-3 columns buttonSection">
-					<button type="submit" ng-click="create(item)" value="observation">Send</button>
-				</div>
-				<div id="observe_errors_text" class="col-lg-9 columns">
-					<div ng-class="alert-danger"
-						ng-show="observeForm.text.$invalid && !observeForm.text.$pristine">Invalid entry</div>
-					<div ng-class="alert-success"
-						ng-show="observeForm.text.$valid && !observeForm.text.$pristine">Ok..</div>
-				</div>
-			</form>
-		</div>
-	</div>
-</section>
 
 <section id="about" class="container content-section text-center">
 	<!-- section title -->
