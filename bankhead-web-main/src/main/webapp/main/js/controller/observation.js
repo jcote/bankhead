@@ -3,11 +3,11 @@ angular.module('bankheadApp')
 
         $scope.isSuccessShown = false;
         $scope.isErrorShown = false;
+        $scope.isFirstFocus = true;
 
         $scope.create = function(item)
         {
-            console.log(item);
-            var observation = new Observation(item);
+            var observation = new Observation();
             observation.text = item.text;
             console.log(observation);
 
@@ -21,6 +21,13 @@ angular.module('bankheadApp')
                 $scope.isErrorShown = true;
             });
 
+        };
+
+        $scope.onFocusHandle = function(item) {
+            if ($scope.isFirstFocus) {
+                item.text = "";
+                $scope.isFirstFocus = false;
+            }
         };
 
     }]);
