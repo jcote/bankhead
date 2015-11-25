@@ -16,6 +16,15 @@ public class CognitionJson {
 	private List<CognitionJson> procedents;
 	private List<String> sentences;
 
+	public CognitionJson(String text) {
+		super();
+		this.text = text;
+	}
+
+	public CognitionJson() {
+		super();
+	}
+
 	public String getText() {
 		return text;
 	}

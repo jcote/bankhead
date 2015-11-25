@@ -1,6 +1,7 @@
 package com.bankhead.data;
 
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.Session;
 
@@ -28,6 +29,6 @@ public interface DataStore {
 
     public int invalidateWebSessions(Session session, long accountId);
 
-	public List<Observation> loadObservations(String noun);
+	public Map<String, List<Observation>> loadObservations(String noun);
 
 }

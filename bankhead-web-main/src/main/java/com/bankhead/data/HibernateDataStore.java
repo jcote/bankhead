@@ -1,8 +1,12 @@
 package com.bankhead.data;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.apache.commons.lang.ArrayUtils;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -15,6 +19,7 @@ import com.bankhead.data.model.Account;
 import com.bankhead.data.model.Contact;
 import com.bankhead.data.model.WebSession;
 import com.bankhead.data.model.cognition.Observation;
+import com.bankhead.data.model.cognition.element.NounTypeAndObservation;
 import com.bankhead.data.model.cognition.element.ObservationNoun;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -54,17 +59,33 @@ public class HibernateDataStore implements DataStore {
 	}
 
     
-    public List<Observation> loadObservations(String noun) {
+    public Map<String, List<Observation>> loadObservations(String noun) {
     	Session session = sessionFactory.openSession();
         Query query = session.createQuery(
-        		  "select o "
+        		  "select new com.bankhead.data.model.cognition.element.NounTypeAndObservation(n.type, o) "
         		+ "from ObservationNoun n "
         		+ "inner join n.observation o "
         		+ "where n.text = :NOUNTEXT"
         		).setString("NOUNTEXT", noun);
-        List<Observation> observations = query.list();
-        session.close();
-        return observations;
+        List<NounTypeAndObservation> ntaos = query.list();
+        
+        // to build
+        Map<String, List<Observation>> observationsByNounType = new HashMap<String, List<Observation>>();
+        
+        // over (noun type + observation)
+        for (NounTypeAndObservation ntao : ntaos) {
+        	if (observationsByNounType.containsKey(ntao.getType())) {
+        		observationsByNounType.get(ntao.getType()).add(ntao.getObservation());
+        	} else {
+        		ArrayList<Observation> observations = new ArrayList<>();
+        		observations.add(ntao.getObservation());
+        		observationsByNounType.put(ntao.getType(), observations);
+        	}
+        	
+        	logger.info("loading for type " + ntao.getType() + " observation: " + ntao.getObservation().getText());
+        }
+        session.close(); // relies on EAGER fetchtype in ObservationNoun
+        return observationsByNounType;
     }
 
     public Session createSession() {

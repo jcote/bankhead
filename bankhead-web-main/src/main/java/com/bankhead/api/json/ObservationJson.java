@@ -3,20 +3,21 @@
  */
 package com.bankhead.api.json;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * @author jordancote
  *
  */
 public class ObservationJson extends CognitionJson {
-	private String noun;
-
-	public String getNoun() {
-		return noun;
+	public ObservationJson() {
+		super();
+	}
+	public ObservationJson(String text) {
+		super(text);
+		// TODO Auto-generated constructor stub
 	}
 
-	public void setNoun(String noun) {
-		this.noun = noun;
-	}
-	
 	
 }

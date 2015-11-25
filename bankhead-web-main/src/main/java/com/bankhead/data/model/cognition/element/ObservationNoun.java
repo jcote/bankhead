@@ -25,7 +25,7 @@ public class ObservationNoun extends DataModel{
     @GeneratedValue
     private long id;
     
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "observation_id", nullable = false)
     private Observation observation;
 	
