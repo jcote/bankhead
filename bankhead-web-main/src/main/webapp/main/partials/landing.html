@@ -18,20 +18,22 @@
 <section ng-init="item.text = 'base';" id="observation-section"
 	class="container content-section text-center">
 	<div class="observe-body" id="observe"  ng-controller="ObservationCtrl">
-		<h2>Enter your observation</h2>
-		<div class="row">
 			<form name="observeForm" novalidate role="form">
-				<div class="col-lg-6 columns inputSection">
-					<span contenteditable="true" type="observe" name="text" ng-model="item.text" ng-focus="onFocusHandle(item)"></span>
-				</div>
-				<div class="col-lg-3 columns buttonSection">
-					<button type="submit" ng-click="create(item)" value="observation">Send</button>
-				</div>
-				<div id="observe_errors_text" class="col-lg-9 columns">
-					<div ng-class="alert-danger"
-						ng-show="observeForm.text.$invalid && !observeForm.text.$pristine">Invalid entry</div>
-					<div ng-class="alert-success"
-						ng-show="observeForm.text.$valid && !observeForm.text.$pristine">Ok..</div>
+				<div class="row">
+					<div class="col-lg-9 columns inputSection">
+						<span contenteditable="true" type="observe" name="text" ng-model="item.text" ng-focus="onFocusHandle(item)"></span>
+					</div>
+					<div class="col-lg-3 columns buttonSection">
+						<div class="row">
+							<button type="submit" ng-click="create(item)" value="observation">Send</button>
+						</div>
+						<div id="observe_errors_text" class="row">
+							<div ng-class="alert-danger"
+								ng-show="observeForm.text.$invalid && !observeForm.text.$pristine">Invalid entry</div>
+							<div ng-class="alert-success"
+								ng-show="observeForm.text.$valid && !observeForm.text.$pristine">Ok..</div>
+						</div>
+					</div>
 				</div>
 			</form>
 		</div>

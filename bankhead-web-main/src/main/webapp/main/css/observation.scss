@@ -10,6 +10,7 @@ Observation Container
     background-position: center center;
     -webkit-background-size: cover;
     background-size: cover;
+    width: 100%;
 }
 
 .observation-container h2 {
@@ -23,7 +24,10 @@ Observation Container
     margin-bottom: 50px;
 }
 
-
+.observe-body {
+  border: 1px solid red;
+  width: 100%;
+}
 
 .observation-container ::-webkit-input-placeholder {
    font-family: 'Akkurat', sans-serif;
@@ -62,11 +66,16 @@ Observation Container
     opacity: 0.7;
 }
 
+.buttonSection {
+  
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
 
 .buttonSection button {
 	background-color: #C24848;
-    border: none;
-	padding: 0.5em;
+    border: 1px solid #000;
+    border-radius: 5px;
 	height: 3em;
     width: 100%;
     text-transform: lowercase;
@@ -77,6 +86,7 @@ Observation Container
 	box-shadow: none;
 	font-size: 25px;
 	padding: 0.53em 25px;
+  margin: 0 25px 0 25px;
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;
 	-o-transition: all 0.3s;
@@ -91,24 +101,22 @@ Observation Container
 }
 
 
-form {
-    margin: 0;
-}
-
 /* use this to get basic styling on all basic form elements */
 span[type="observe"] {
   -webkit-appearance: none;
-  -webkit-border-radius: 0;
-  border-radius: 5;
+  -webkit-border-radius: 25px;
+  border-radius: 25px;
   background-color: white;
   font-family: inherit;
   border: 0px solid #cccccc;
-  -webkit-box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.25) inset,  0 0 30px 15px rgba(255, 255, 255, 0.25);
-  box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.25) inset,  0 0 30px 15px rgba(255, 255, 255, 0.25);
+  -webkit-transition: -webkit-box-shadow 2s; /* Safari */
+  transition: box-shadow 2s;
+  -webkit-box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.25) inset,  0 0 200px 20px rgba(255, 255, 255, 1);
+  box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.25) inset,  0 0 200px 20px rgba(255, 255, 255, 1);
   color: rgba(0, 0, 0, 0.75);
   display: block;
   font-size: 2em;
-  margin: 0 0 1em 0;
+  margin: 100px 0 100px 0;
   padding: 0.25em;
   height: 3em;
   width: 100%;
@@ -117,22 +125,21 @@ span[type="observe"] {
   box-sizing: border-box;
   -webkit-transition: -webkit-box-shadow 0.45s, border-color 0.45s ease-in-out;
   -moz-transition: -moz-box-shadow 0.45s, border-color 0.45s ease-in-out;
-  transition: box-shadow 0.45s, border-color 0.45s ease-in-out; }
+  transition: box-shadow 0.45s, border-color 0.45s ease-in-out; 
 
-  input[type="observe"]:focus,
+  }
+
+  span[type="observe"]:focus,
   textarea:focus {
-    -webkit-box-shadow: 0 0 5px #999999;
-    -moz-box-shadow: 0 0 5px #999999;
-    box-shadow: 0 0 5px #999999;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
     border-color: #999999; }
 
-  input[type="email"]:focus,
-  input[type="zip"]:focus,
-  textarea:focus {
+  span[type="observe"]:focus {
     background: #fafafa;
     border-color: #999999;
     outline: none; }
 
-  input[type="observe"][disabled],
-  textarea[disabled] {
+  span[type="observe"][disabled] {
     background-color: #dddddd; }
